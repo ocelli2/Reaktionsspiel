@@ -15,15 +15,15 @@
   </head>
   <body>
 
-<p id= "text"> Klicke so schnell wie möglich auf die Formen!</p>
+<p id= "text">Finde die Memes! Lachen ist gesund!</p>
 <p> Deine Reaktionszeit:<span id="time"></span></p>
-<div id="shape" class="shape"></div>
+
 
 <script type="text/javascript">
-
-var images = ["Bildmaterial/douche.jpg", "Bildmaterial/job.jpg", "Bildmaterial/bieber.jpg", "Bildmaterial/dad.jpg", "Bildmaterial/dead.jpg", "Bildmaterial/maths.jpg", "Bildmaterial/pizza.jpg", "Bildmaterial/trump.jpg", "Bildmaterial/shoes.jpg", "Bildmaterial/question.jpg"]
-images [getRandomInt(0, images.length-1)]
-
+<div id="shape" class="shape">
+var images = ["Bildmaterial/douche.jpg", "Bildmaterial/job.jpg", "Bildmaterial/bieber.jpg", "Bildmaterial/dad.jpg", "Bildmaterial/dead.jpg", "Bildmaterial/maths.jpg", "Bildmaterial/pizza.jpg", "Bildmaterial/trump.jpg", "Bildmaterial/shoes.jpg", "Bildmaterial/question.jpg"];
+figure.style.background = "url("+images [getRandomInt(0, images.length-1)]+")";
+</div>
 
 var figur = document.getElementById("shape");
 var start = new Date().getTime();
@@ -43,19 +43,15 @@ function showFigure(){
   var shape = getRandomInt (0,1)*50;
 
 
-
-  figur.style.background = '#'+Math.floor(Math.random()*15000000).toString(16);
   figur.style.width = size+"px";
   figur.style.height = size+"px";
-
   figur.style.left = left+"px";
   figur.style.top = top+"px";
 
-  figur.style.borderRadius = shape + "%";
+  figur.style.borderRadius = borderRadius + "%";
   start = new Date().getTime();
 }
 showFigure();
-
 
 
 figur.onclick = function(){
