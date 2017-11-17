@@ -5,25 +5,46 @@
     <title>Reaktionsspiel</title>
 
 <style media="screen">
+body{
+  background: url(Bildmaterial/background.jpg) no-repeat fixed;
+  background-size: cover;
+}
+
+h1{
+  font-size: 5em;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2{
+  font-size: 2em;
+  font-family: monospace;
+  font-weight:lighter;
+  text-align: center;
+}
 
   #shape{
     position: absolute;
   }
 }
+
+
 </style>
 
   </head>
   <body>
 
-<p id= "text">Finde die Memes! Lachen ist gesund!</p>
-<p> Deine Reaktionszeit:<span id="time"></span></p>
-
+<h1><p id= "text">Finde die Memes! Lachen ist gesund!</p></h1>
+<h2><p> Du hast ne ganz schön lange Leitung und zwar:<span id="time"></span></p></h2>
+<div id="shape" class="shape"></div>
 
 <script type="text/javascript">
-<div id="shape" class="shape">
-var images = ["Bildmaterial/douche.jpg", "Bildmaterial/job.jpg", "Bildmaterial/bieber.jpg", "Bildmaterial/dad.jpg", "Bildmaterial/dead.jpg", "Bildmaterial/maths.jpg", "Bildmaterial/pizza.jpg", "Bildmaterial/trump.jpg", "Bildmaterial/shoes.jpg", "Bildmaterial/question.jpg"];
-figure.style.background = "url("+images [getRandomInt(0, images.length-1)]+")";
-</div>
+
+var images = ["Bildmaterial/douche.jpg", "Bildmaterial/job.jpg", "Bildmaterial/bieber.jpg", "Bildmaterial/dad.jpg", "Bildmaterial/dead.jpg", "Bildmaterial/maths.jpg", "Bildmaterial/pizza.jpg", "Bildmaterial/trump.png", "Bildmaterial/shoes.jpg", "Bildmaterial/question.jpg"];
+
+
+
 
 var figur = document.getElementById("shape");
 var start = new Date().getTime();
@@ -35,10 +56,10 @@ function getRandomInt (min, max){
 }
 
 function showFigure(){
-  var size = getRandomInt(100,400);
+  var size = getRandomInt(300,300);
 
   var left = getRandomInt(100, window.innerWidth-size);
-  var top = getRandomInt(100, window.innerHeight-size);
+  var top = getRandomInt(250, window.innerHeight-size);
 
   var shape = getRandomInt (0,1)*50;
 
@@ -48,7 +69,11 @@ function showFigure(){
   figur.style.left = left+"px";
   figur.style.top = top+"px";
 
-  figur.style.borderRadius = borderRadius + "%";
+  figur.style.background = "url("+images [getRandomInt(0, images.length-1)]+")";
+  figur.style.backgroundSize = "contain";
+  figur.style.backgroundRepeat = "no-repeat";
+  figur.style.display = "block";
+
   start = new Date().getTime();
 }
 showFigure();
@@ -56,8 +81,9 @@ showFigure();
 
 figur.onclick = function(){
   end = new Date().getTime();
-  document.getElementById("time").innerHTML = (end-start)/1000;
-  showFigure();
+  document.getElementById("time").innerHTML = (end-start)/1000+"sec";
+  setTimeout(showFigure, Math.random() * 2000);
+
 }
 
 
