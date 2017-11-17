@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reaktionsspiel</title>
+
+<style media="screen">
+
+  #shape{
+    position: absolute;
+  }
+}
+</style>
+
+  </head>
+  <body>
+
+<p id= "text"> Klicke so schnell wie möglich auf die Formen!</p>
+<p> Deine Reaktionszeit:<span id="time"></span></p>
+<div id="shape" class="shape"></div>
+
+<script type="text/javascript">
+
+var figur = document.getElementById("shape");
+var start = new Date().getTime();
+var end = new Date().getTime();
+
+function getRandomInt (min, max){
+  var randomInt = Math.floor(Math.random() * (max - min+1) + min);
+  return randomInt;
+}
+
+function showFigure(){
+  var size = getRandomInt(100,400);
+
+  var left = getRandomInt(100, window.innerWidth-size);
+  var top = getRandomInt(100, window.innerHeight-size);
+
+  var shape = getRandomInt (0,1)*50;
+
+
+
+  figur.style.background = '#'+Math.floor(Math.random()*15000000).toString(16);
+  figur.style.width = size+"px";
+  figur.style.height = size+"px";
+
+  figur.style.left = left+"px";
+  figur.style.top = top+"px";
+
+  figur.style.borderRadius = shape + "%";
+  start = new Date().getTime();
+}
+showFigure();
+
+
+
+figur.onclick = function(){
+  end = new Date().getTime();
+  document.getElementById("time").innerHTML = (end-start)/1000;
+  showFigure();
+}
+
+
+
+</script>
+
+  </body>
+</html>
